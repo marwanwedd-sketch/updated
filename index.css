@@ -61,6 +61,28 @@
   animation: wiggle 3s ease-in-out infinite;
 }
 
+/* Main hero banner */
+@keyframes banner-enter {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+@keyframes banner-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+.animate-banner-enter {
+  animation: banner-enter 0.8s ease-out forwards;
+}
+.animate-banner-float {
+  animation: banner-float 5s ease-in-out 0.8s infinite;
+}
+
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
@@ -114,20 +136,20 @@ html {
   }
 }
 ::-webkit-scrollbar-track {
-  background: #F5F2ED;
+  background: #FDF8F5;
 }
 ::-webkit-scrollbar-thumb {
   background: #2D5A27;
-  border-radius: 5px;
+  border-radius: 999px;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #C96549;
 }
 
-/* Selection color */
+/* Selection color - pet-friendly terracotta */
 ::selection {
-  background-color: #E27D60;
-  color: white;
+  background-color: rgba(226, 125, 96, 0.35);
+  color: #1a1a1a;
 }
 
 /* Focus styles */

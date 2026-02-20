@@ -12,7 +12,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Nunito:wght@500;600;700;800&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
       theme: {
@@ -30,10 +30,19 @@
             'warm-sand': '#F5F2ED',
             'terracotta': '#E27D60',
             'terracotta-dark': '#C96549',
+            'pet-cream': '#FDF8F5',
           },
           fontFamily: {
             'sans': ['Inter', 'sans-serif'],
-            'display': ['Quicksand', 'sans-serif'],
+            'display': ['Nunito', 'sans-serif'],
+          },
+          borderRadius: {
+            'pet': '1.25rem',
+            'pet-lg': '1.75rem',
+          },
+          boxShadow: {
+            'pet': '0 4px 20px -2px rgba(45, 90, 39, 0.08), 0 2px 8px -2px rgba(226, 125, 96, 0.06)',
+            'pet-hover': '0 20px 40px -10px rgba(45, 90, 39, 0.12), 0 8px 16px -4px rgba(226, 125, 96, 0.08)',
           },
         }
       }
@@ -41,7 +50,7 @@
   </script>
   <style>
     body {
-      background-color: #F5F2ED;
+      background-color: #FDF8F5;
       color: #1a1a1a;
       scroll-behavior: smooth;
       font-feature-settings: "kern" 1;
