@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { useLanguage } from '../contexts/LanguageContext';
-import { PawPrint, CuteCat } from './PetDoodles';
+import { PawPrint, CuteCat, CuteDog } from './PetDoodles';
 import product1 from '../1.jpeg';
 import productRemiCat from '../remi-cat-food.png';
 import product3 from '../3.jpeg';
@@ -49,6 +49,16 @@ const products: ProductShowcaseItem[] = [
 const catsProducts = products.filter((p) => CAT_PRODUCT_IDS.includes(p.id));
 const dogsProducts = products.filter((p) => !CAT_PRODUCT_IDS.includes(p.id));
 
+/** Used by Navbar search - id, name, alt, summary for filtering */
+export const productSearchIndex = products.map((p) => ({
+  id: p.id,
+  name: (p.name ?? p.alt).toLowerCase(),
+  alt: p.alt.toLowerCase(),
+  summary: p.summary.toLowerCase(),
+  displayName: p.name ?? p.alt,
+  size: p.size,
+}));
+
 const ProductDetailModal: React.FC<{
   product: ProductShowcaseItem;
   onClose: () => void;
@@ -77,7 +87,7 @@ const ProductDetailModal: React.FC<{
       aria-labelledby="product-modal-title"
     >
       <div
-        className="relative w-full max-w-lg max-h-[90vh] sm:max-h-[85vh] bg-white rounded-t-3xl sm:rounded-3xl shadow-2xl overflow-hidden flex flex-col"
+        className="relative w-full max-w-lg max-h-[90vh] sm:max-h-[85vh] bg-white rounded-t-[1.5rem] sm:rounded-[1.5rem] shadow-pet-hover overflow-hidden flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         <button
@@ -154,13 +164,13 @@ const ProductTile: React.FC<{
       tabIndex={0}
       onClick={onView}
       onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onView(); } }}
-      className="group relative overflow-hidden rounded-xl sm:rounded-2xl bg-white p-3 sm:p-5 shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 active:scale-[0.98] border border-forest-green/10 cursor-pointer touch-manipulation"
+      className="group relative overflow-hidden rounded-[1.25rem] sm:rounded-[1.5rem] bg-white p-3 sm:p-5 shadow-pet transition-all duration-300 hover:shadow-pet-hover hover:-translate-y-1 active:scale-[0.98] border border-forest-green/5 cursor-pointer touch-manipulation"
     >
       {/* View badge - visible; whole card and badge open modal */}
       <button
         type="button"
         onClick={(e) => { e.preventDefault(); e.stopPropagation(); onView(); }}
-        className="absolute top-3 right-3 z-10 flex items-center gap-1.5 px-2.5 py-1.5 rounded-full bg-forest-green/15 text-forest-green text-xs font-semibold hover:bg-forest-green/25 active:scale-95 transition-colors"
+        className="absolute top-3 right-3 z-10 flex items-center gap-1.5 px-3 py-2 rounded-full bg-white/95 shadow-pet text-forest-green text-xs font-bold border border-forest-green/10 hover:bg-forest-green/10 active:scale-95 transition-colors"
         aria-label={`View details for ${product.name || product.alt}`}
       >
         <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -178,7 +188,7 @@ const ProductTile: React.FC<{
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent transform -skew-x-12 translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700" />
       </div>
 
-      <div className="relative aspect-square w-full bg-gradient-to-br from-warm-sand/40 to-white rounded-xl overflow-hidden">
+      <div className="relative aspect-square w-full bg-gradient-to-br from-pet-cream to-warm-sand/50 rounded-xl overflow-hidden border border-forest-green/5">
         <img
           src={product.imageUrl}
           alt={product.alt}
@@ -211,34 +221,46 @@ const ProductTile: React.FC<{
   );
 };
 
+export const OPEN_PRODUCT_EVENT = 'siam-open-product';
+
 const ProductSection: React.FC = () => {
   const { t } = useLanguage();
   const [selectedProduct, setSelectedProduct] = useState<ProductShowcaseItem | null>(null);
 
+  useEffect(() => {
+    const handleOpenProduct = (e: CustomEvent<{ productId: string }>) => {
+      const product = products.find((p) => p.id === e.detail.productId);
+      if (product) setSelectedProduct(product);
+    };
+    window.addEventListener(OPEN_PRODUCT_EVENT, handleOpenProduct as EventListener);
+    return () => window.removeEventListener(OPEN_PRODUCT_EVENT, handleOpenProduct as EventListener);
+  }, []);
+
   return (
-    <section id="shop" className="py-14 sm:py-20 lg:py-24 bg-gradient-to-b from-white via-warm-sand/20 to-white">
+    <section id="shop" className="py-14 sm:py-20 lg:py-24 bg-gradient-to-b from-pet-cream via-warm-sand/15 to-pet-cream">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-10">
         <div className="text-center mb-10 sm:mb-16">
-          <div className="flex justify-center gap-1.5 mb-4">
-            <PawPrint size={18} className="text-forest-green/35" />
-            <PawPrint size={22} className="text-terracotta/40" />
-            <PawPrint size={18} className="text-forest-green/35" />
+          <div className="flex justify-center gap-2 mb-4">
+            <PawPrint size={20} className="text-forest-green/40" />
+            <PawPrint size={24} className="text-terracotta/50" />
+            <PawPrint size={20} className="text-forest-green/40" />
           </div>
-          <span className="inline-flex items-center justify-center gap-2 px-4 py-1.5 rounded-full bg-forest-green/10 text-forest-green font-semibold text-sm mb-4 sm:mb-6 tracking-wide uppercase">
-            <CuteCat size={18} className="text-terracotta/70" />
+          <span className="inline-flex items-center justify-center gap-2 px-5 py-2 rounded-full bg-white shadow-pet text-forest-green font-bold text-sm mb-4 sm:mb-6 tracking-wide uppercase border border-forest-green/10">
+            <CuteCat size={20} className="text-terracotta shrink-0" />
             {t('products.badge')}
+            <CuteDog size={20} className="text-forest-green shrink-0" />
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-forest-green mb-4 sm:mb-6">
             {t('products.title')}
           </h2>
-          <p className="text-forest-green/60 text-base sm:text-lg lg:text-xl max-w-2xl mx-auto leading-relaxed px-1">
+          <p className="text-forest-green/65 text-base sm:text-lg lg:text-xl max-w-2xl mx-auto leading-relaxed px-1">
             {t('products.subtitle')}
           </p>
         </div>
 
         {/* Cats section */}
         <div className="mb-14 sm:mb-20">
-          <h3 className="text-2xl sm:text-3xl font-display font-bold text-forest-green mb-6 sm:mb-8">
+          <h3 className="inline-flex items-center gap-2 text-2xl sm:text-3xl font-display font-bold text-forest-green mb-6 sm:mb-8 px-5 py-2.5 rounded-full bg-white/80 shadow-pet border border-forest-green/10">
             🐱 {t('about.cats')}
           </h3>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6 lg:gap-8 xl:gap-10">
@@ -259,7 +281,7 @@ const ProductSection: React.FC = () => {
 
         {/* Dogs section */}
         <div>
-          <h3 className="text-2xl sm:text-3xl font-display font-bold text-forest-green mb-6 sm:mb-8">
+          <h3 className="inline-flex items-center gap-2 text-2xl sm:text-3xl font-display font-bold text-forest-green mb-6 sm:mb-8 px-5 py-2.5 rounded-full bg-white/80 shadow-pet border border-forest-green/10">
             🐕 {t('about.dogs')}
           </h3>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6 lg:gap-8 xl:gap-10">
@@ -286,10 +308,10 @@ const ProductSection: React.FC = () => {
         )}
 
         <div className="mt-10 sm:mt-16 text-center">
-          <p className="text-forest-green/70 mb-4 sm:mb-6 text-base sm:text-lg">{t('products.lookingFor')}</p>
+          <p className="text-forest-green/70 mb-4 sm:mb-6 text-base sm:text-lg font-medium">{t('products.lookingFor')}</p>
           <a
             href="#contact"
-            className="inline-flex items-center justify-center gap-2 bg-forest-green text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full font-semibold hover:bg-forest-green/90 transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 active:scale-[0.98] min-h-[48px]"
+            className="inline-flex items-center justify-center gap-2 bg-forest-green text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full font-bold shadow-pet hover:shadow-pet-hover hover:bg-forest-green/90 transition-all hover:-translate-y-0.5 active:scale-[0.98] min-h-[48px]"
           >
             <span>{t('products.contactUs')}</span>
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

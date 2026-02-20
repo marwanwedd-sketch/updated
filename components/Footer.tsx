@@ -14,17 +14,17 @@ const Footer: React.FC = () => {
 
   return (
     <footer className="bg-gradient-to-b from-forest-green to-forest-green/95 text-white py-12 sm:py-16 lg:py-20 relative overflow-hidden">
-      {/* Decorative elements */}
+      {/* Decorative elements - soft pet-friendly glow */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-        <div className="absolute top-10 right-10 w-64 h-64 bg-terracotta/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-10 left-10 w-72 h-72 bg-white/5 rounded-full blur-3xl"></div>
-        {/* Paw trail */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3 opacity-20">
-          <PawPrint size={14} className="text-white" />
-          <PawPrint size={12} className="text-white -rotate-12" />
-          <PawPrint size={14} className="text-white rotate-6" />
-          <PawPrint size={12} className="text-white -rotate-6" />
-          <PawPrint size={14} className="text-white" />
+        <div className="absolute top-10 right-10 w-64 h-64 bg-terracotta/15 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-10 left-10 w-72 h-72 bg-white/10 rounded-full blur-3xl"></div>
+        {/* Paw trail - friendlier spacing */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-4 opacity-25">
+          <PawPrint size={16} className="text-white" />
+          <PawPrint size={14} className="text-white -rotate-12" />
+          <PawPrint size={16} className="text-white rotate-6" />
+          <PawPrint size={14} className="text-white -rotate-6" />
+          <PawPrint size={16} className="text-white" />
         </div>
       </div>
 
@@ -33,7 +33,7 @@ const Footer: React.FC = () => {
           {/* Brand section */}
           <div className="max-w-sm">
             <div className="flex items-center space-x-3 mb-4 sm:mb-6">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-xl overflow-hidden flex items-center justify-center shadow-lg shrink-0">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-2xl overflow-hidden flex items-center justify-center shadow-pet shrink-0">
                 <img src={webLogo} alt="Siam Pet Food logo" className="w-full h-full object-contain" />
               </div>
               <span className="text-xl sm:text-2xl font-display font-bold">Siam Pet Food</span>
@@ -46,7 +46,7 @@ const Footer: React.FC = () => {
                 <a 
                   key={social.name}
                   href="#" 
-                  className="group min-h-[44px] min-w-[44px] w-12 h-12 bg-white/10 hover:bg-terracotta rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg active:scale-95"
+                  className="group min-h-[44px] min-w-[44px] w-12 h-12 bg-white/10 hover:bg-terracotta rounded-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95"
                   aria-label={social.name}
                 >
                   <svg className="w-5 h-5 fill-current text-white group-hover:text-white" viewBox="0 0 24 24">
@@ -119,9 +119,9 @@ const Footer: React.FC = () => {
         <div className="pt-6 sm:pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-xs sm:text-sm text-white/50 space-y-4 md:space-y-0 gap-4">
           <p className="text-center md:text-left">{t('footer.copyright')}</p>
           <div className="flex flex-wrap gap-4 sm:gap-6 justify-center md:justify-end">
-            <a href="#" className="hover:text-white transition-colors min-h-[44px] flex items-center">{t('footer.privacy')}</a>
-            <a href="#" className="hover:text-white transition-colors min-h-[44px] flex items-center">{t('footer.terms')}</a>
-            <a href="#" className="hover:text-white transition-colors min-h-[44px] flex items-center">{t('footer.cookie')}</a>
+            <a href="/privacy.html" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors min-h-[44px] flex items-center">{t('footer.privacy')}</a>
+            <a href="/terms.html" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors min-h-[44px] flex items-center">{t('footer.terms')}</a>
+            <a href="/cookie.html" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors min-h-[44px] flex items-center">{t('footer.cookie')}</a>
           </div>
         </div>
       </div>

@@ -8,10 +8,15 @@ import { CuteCat, CuteDog } from './PetDoodles';
 const Hero: React.FC = () => {
   const { t } = useLanguage();
   return (
-    <section id="hero" className="relative overflow-hidden pt-6 pb-14 sm:pt-10 sm:pb-20 lg:pt-24 lg:pb-32 bg-gradient-to-b from-warm-sand via-warm-sand to-white/50">
-      {/* Hero banner */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 mb-10 sm:mb-12">
-        <div className="relative w-full overflow-hidden rounded-2xl sm:rounded-3xl shadow-2xl ring-2 ring-white/40 ring-offset-2 ring-offset-warm-sand/80">
+    <section id="hero" className="relative overflow-hidden pt-6 pb-14 sm:pt-10 sm:pb-20 lg:pt-24 lg:pb-32 bg-gradient-to-b from-pet-cream via-warm-sand/90 to-white/60">
+      {/* Hero banner - soft, pet-friendly frame with background */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 mb-10 sm:mb-12 relative">
+        {/* Decorative background behind banner */}
+        <div className="absolute left-1/2 -translate-x-1/2 top-0 w-[102%] h-[200px] sm:h-[240px] lg:h-[280px] -z-10 pointer-events-none" aria-hidden>
+          <div className="absolute inset-0 rounded-[2rem] sm:rounded-[2.5rem] bg-gradient-to-br from-terracotta/20 via-forest-green/15 to-warm-sand/80" />
+          <div className="absolute -inset-1 rounded-[2.25rem] sm:rounded-[2.75rem] border border-forest-green/10 border-dashed opacity-50" />
+        </div>
+        <div className="relative w-full overflow-hidden rounded-[1.5rem] sm:rounded-[2rem] shadow-pet hover:shadow-pet-hover transition-shadow duration-500 border border-white/80 animate-banner-enter animate-banner-float">
           <img
             src={heroBanner}
             alt="Happy cat and dog - Siam Pet Food"
@@ -39,10 +44,10 @@ const Hero: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 relative z-10">
         <div className="lg:grid lg:grid-cols-2 lg:gap-16 xl:gap-20 items-center">
           <div className="mb-8 sm:mb-12 lg:mb-0 animate-fade-in-up">
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 sm:px-5 sm:py-2 rounded-full bg-gradient-to-r from-forest-green/10 to-terracotta/10 text-forest-green font-semibold text-xs sm:text-sm mb-5 sm:mb-8 tracking-wide uppercase border border-forest-green/20 backdrop-blur-sm">
-              <CuteCat size={20} className="text-terracotta/80 shrink-0" />
+            <span className="inline-flex items-center gap-2 px-4 py-2 sm:px-5 sm:py-2.5 rounded-full bg-white/80 shadow-pet text-forest-green font-bold text-xs sm:text-sm mb-5 sm:mb-8 tracking-wide uppercase border border-forest-green/10 backdrop-blur-sm">
+              <CuteCat size={22} className="text-terracotta shrink-0" />
               {t('hero.badge')}
-              <CuteDog size={20} className="text-forest-green/80 shrink-0" />
+              <CuteDog size={22} className="text-forest-green shrink-0" />
             </span>
             <h1 className="text-3xl xs:text-4xl sm:text-5xl lg:text-7xl xl:text-8xl font-display font-bold text-forest-green leading-[1.15] mb-5 sm:mb-8">
               {t('hero.title')}{' '}
@@ -60,7 +65,7 @@ const Hero: React.FC = () => {
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
               <a 
                 href="#contact" 
-                className="group inline-flex items-center justify-center bg-gradient-to-r from-terracotta to-terracotta-dark text-white px-8 py-4 sm:px-12 sm:py-5 rounded-full font-bold text-base sm:text-lg hover:shadow-2xl hover:shadow-terracotta/30 transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 active:scale-[0.98] min-h-[48px]"
+                className="group inline-flex items-center justify-center bg-gradient-to-r from-terracotta to-terracotta-dark text-white px-8 py-4 sm:px-12 sm:py-5 rounded-full font-bold text-base sm:text-lg shadow-pet hover:shadow-pet-hover transition-all duration-300 transform hover:-translate-y-0.5 hover:scale-[1.02] active:scale-[0.98] min-h-[48px]"
               >
                 <span>{t('hero.messageUs')}</span>
                 <svg className="ml-2 w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -69,29 +74,29 @@ const Hero: React.FC = () => {
               </a>
               <a 
                 href="#shop" 
-                className="inline-flex items-center justify-center bg-white text-forest-green px-8 py-4 sm:px-12 sm:py-5 rounded-full font-bold text-base sm:text-lg border-2 border-forest-green/20 hover:border-forest-green hover:shadow-lg transition-all duration-300 active:scale-[0.98] min-h-[48px]"
+                className="inline-flex items-center justify-center bg-white text-forest-green px-8 py-4 sm:px-12 sm:py-5 rounded-full font-bold text-base sm:text-lg border-2 border-forest-green/15 hover:border-forest-green/40 hover:bg-forest-green/5 shadow-pet hover:shadow-pet-hover transition-all duration-300 active:scale-[0.98] min-h-[48px]"
               >
                 {t('hero.viewProducts')}
               </a>
             </div>
             
-            {/* Trust indicators */}
+            {/* Trust indicators - pet-friendly badges */}
             <div className="mt-8 sm:mt-12 flex flex-wrap gap-4 sm:gap-8 items-center">
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-full bg-forest-green/10 flex items-center justify-center">
+              <div className="flex items-center gap-3 px-4 py-2 rounded-full bg-white/70 border border-forest-green/10 shadow-pet">
+                <div className="w-9 h-9 rounded-full bg-forest-green/10 flex items-center justify-center shrink-0">
                   <svg className="w-5 h-5 text-forest-green" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                 </div>
-                <span className="text-sm font-medium text-forest-green/70">{t('hero.certifiedOrganic')}</span>
+                <span className="text-sm font-semibold text-forest-green/80">{t('hero.certifiedOrganic')}</span>
               </div>
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-full bg-forest-green/10 flex items-center justify-center">
-                  <svg className="w-5 h-5 text-forest-green" fill="currentColor" viewBox="0 0 20 20">
+              <div className="flex items-center gap-3 px-4 py-2 rounded-full bg-white/70 border border-forest-green/10 shadow-pet">
+                <div className="w-9 h-9 rounded-full bg-terracotta/10 flex items-center justify-center shrink-0">
+                  <svg className="w-5 h-5 text-terracotta" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                   </svg>
                 </div>
-                <span className="text-sm font-medium text-forest-green/70">{t('hero.premiumQuality')}</span>
+                <span className="text-sm font-semibold text-forest-green/80">{t('hero.premiumQuality')}</span>
               </div>
             </div>
           </div>
@@ -101,32 +106,32 @@ const Hero: React.FC = () => {
             <div className="absolute -top-10 -right-10 w-72 h-72 bg-gradient-to-br from-terracotta/20 to-terracotta/5 rounded-full blur-3xl animate-pulse"></div>
             <div className="absolute -bottom-10 -left-10 w-80 h-80 bg-gradient-to-tr from-forest-green/10 to-forest-green/5 rounded-full blur-3xl animate-pulse delay-700"></div>
             
-            <div className="relative grid grid-cols-2 gap-2 sm:gap-4 lg:gap-6">
-              <div className="space-y-2 sm:space-y-4 lg:space-y-6">
+            <div className="relative grid grid-cols-2 gap-3 sm:gap-4 lg:gap-6">
+              <div className="space-y-3 sm:space-y-4 lg:space-y-6">
                 <div className="relative group">
-                  <div className="absolute inset-0 bg-gradient-to-br from-terracotta/20 to-transparent rounded-[2.5rem] blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="absolute inset-0 bg-gradient-to-br from-terracotta/15 to-transparent rounded-[1.5rem] sm:rounded-[2rem] blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   <img 
                     src={heroCat1}
                     alt="Curious cat portrait"
-                    className="relative rounded-2xl sm:rounded-[2.5rem] shadow-2xl transform hover:rotate-2 hover:scale-105 transition-all duration-500 w-full"
+                    className="relative rounded-[1.5rem] sm:rounded-[2rem] shadow-pet border border-white/60 transform hover:rotate-1 hover:scale-[1.03] transition-all duration-500 w-full"
                   />
                 </div>
               </div>
-              <div className="pt-8 sm:pt-12 lg:pt-16 space-y-2 sm:space-y-4 lg:space-y-6">
+              <div className="pt-8 sm:pt-12 lg:pt-16 space-y-3 sm:space-y-4 lg:space-y-6">
                 <div className="relative group">
-                  <div className="absolute inset-0 bg-gradient-to-br from-forest-green/20 to-transparent rounded-[2.5rem] blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="absolute inset-0 bg-gradient-to-br from-forest-green/15 to-transparent rounded-[1.5rem] sm:rounded-[2rem] blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   <img 
                     src={heroDog2}
                     alt="Dog enjoying a meal"
-                    className="relative rounded-2xl sm:rounded-[2.5rem] shadow-2xl transform hover:-rotate-2 hover:scale-105 transition-all duration-500 w-full"
+                    className="relative rounded-[1.5rem] sm:rounded-[2rem] shadow-pet border border-white/60 transform hover:-rotate-1 hover:scale-[1.03] transition-all duration-500 w-full"
                   />
                 </div>
                 <div className="relative group">
-                  <div className="absolute inset-0 bg-gradient-to-br from-forest-green to-forest-green/80 rounded-[2.5rem] blur-lg opacity-50 group-hover:opacity-75 transition-opacity"></div>
-                  <div className="relative bg-gradient-to-br from-forest-green to-forest-green/90 p-4 sm:p-6 lg:p-10 rounded-2xl sm:rounded-[2.5rem] text-white flex flex-col justify-center shadow-2xl transform hover:scale-105 transition-transform duration-300">
-                    <div className="text-3xl sm:text-5xl lg:text-6xl font-bold mb-1 sm:mb-2 bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent">100%</div>
-                    <div className="text-xs sm:text-sm lg:text-base font-medium text-white/90">{t('hero.humanGrade')}</div>
-                    <div className="mt-2 sm:mt-4 flex items-center gap-2 text-[10px] sm:text-xs text-white/70">
+                  <div className="absolute inset-0 bg-gradient-to-br from-forest-green to-forest-green/85 rounded-[1.5rem] sm:rounded-[2rem] blur-lg opacity-60 group-hover:opacity-80 transition-opacity"></div>
+                  <div className="relative bg-gradient-to-br from-forest-green to-forest-green/90 p-4 sm:p-6 lg:p-10 rounded-[1.5rem] sm:rounded-[2rem] text-white flex flex-col justify-center shadow-pet border border-white/20 transform hover:scale-[1.02] transition-transform duration-300">
+                    <div className="text-3xl sm:text-5xl lg:text-6xl font-bold mb-1 sm:mb-2 bg-gradient-to-r from-white to-white/90 bg-clip-text text-transparent">100%</div>
+                    <div className="text-xs sm:text-sm lg:text-base font-semibold text-white/95">{t('hero.humanGrade')}</div>
+                    <div className="mt-2 sm:mt-4 flex items-center gap-2 text-[10px] sm:text-xs text-white/80">
                       <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                       </svg>
