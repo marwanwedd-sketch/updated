@@ -1,7 +1,8 @@
 import React from 'react';
 import heroBanner from '../hero-pet-shop.png';
 import heroCat1 from '../hero-cat-1.jpg';
-import heroDog2 from '../hero-dog-2.jpg';
+import heroDogPhoto from '../hero-dog-photo.png';
+import heroFeedingPets from '../hero-feeding-pets.png';
 import { useLanguage } from '../contexts/LanguageContext';
 import { CuteCat, CuteDog } from './PetDoodles';
 
@@ -116,13 +117,21 @@ const Hero: React.FC = () => {
                     className="relative rounded-[1.5rem] sm:rounded-[2rem] shadow-pet border border-white/60 transform hover:rotate-1 hover:scale-[1.03] transition-all duration-500 w-full"
                   />
                 </div>
+                <div className="relative group">
+                  <div className="absolute inset-0 bg-gradient-to-br from-terracotta/15 to-transparent rounded-[1.5rem] sm:rounded-[2rem] blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <img 
+                    src={heroFeedingPets}
+                    alt="Feeding pets with love - Siam Pet Food"
+                    className="relative rounded-[1.5rem] sm:rounded-[2rem] shadow-pet border border-white/60 transform hover:rotate-1 hover:scale-[1.03] transition-all duration-500 w-full"
+                  />
+                </div>
               </div>
               <div className="pt-8 sm:pt-12 lg:pt-16 space-y-3 sm:space-y-4 lg:space-y-6">
                 <div className="relative group">
                   <div className="absolute inset-0 bg-gradient-to-br from-forest-green/15 to-transparent rounded-[1.5rem] sm:rounded-[2rem] blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   <img 
-                    src={heroDog2}
-                    alt="Dog enjoying a meal"
+                    src={heroDogPhoto}
+                    alt="Happy dog - Siam Pet Food"
                     className="relative rounded-[1.5rem] sm:rounded-[2rem] shadow-pet border border-white/60 transform hover:-rotate-1 hover:scale-[1.03] transition-all duration-500 w-full"
                   />
                 </div>
