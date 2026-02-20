@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 import { useLanguage } from '../contexts/LanguageContext';
 import { PawPrint, CuteCat } from './PetDoodles';
 import product1 from '../1.jpeg';
-import product2 from '../2.png';
+import productRemiCat from '../remi-cat-food.png';
 import product3 from '../3.jpeg';
 import product5 from '../5.jpeg';
 import product6 from '../6.jpeg';
@@ -15,6 +15,7 @@ import product13 from '../13.jpeg';
 import product14 from '../14.jpeg';
 import product15 from '../15.jpeg';
 import product16 from '../16.jpeg';
+import productRemi from '../remi-dog-food.png';
 
 type ProductShowcaseItem = {
   id: string;
@@ -30,7 +31,7 @@ const CAT_PRODUCT_IDS = ['2', '3', '5', '6', '11', '14'];
 
 const products: ProductShowcaseItem[] = [
   { id: '1', imageUrl: product1, alt: 'Chicken in Gravy', name: 'Chicken in Gravy', size: '80g', summary: 'Tender chicken in savory gravy. Real chicken, no artificial colors or flavors.', description: 'Made with real chicken and natural ingredients, this wet food is perfect for cats who love a meaty, flavorful meal.' },
-  { id: '2', imageUrl: product2, alt: 'Dry food for cats', name: 'Dry food for cats', size: '2.5 kg', summary: 'Complete dry nutrition for adult cats. Crunchy kibble for dental health.', description: 'Complete and balanced dry nutrition. Provides all the essential nutrients your cat needs. Ideal for daily feeding.' },
+  { id: '2', imageUrl: productRemiCat, alt: 'REMI Cat Food', name: 'REMI Cat Food', size: '2.5 kg', summary: 'Natural & nutritious. High protein, grain-free, with Omega 6 & taurine for heart and eye health.', description: 'Remember Remi. Premium dry cat food made with natural ingredients. High protein for lean muscles, grain-free for sensitive tummies, and Omega 6 & taurine for a healthy heart and eyes. Complete nutrition cats love.' },
   { id: '3', imageUrl: product3, alt: 'Feline Treats', name: 'Feline Treats - Chicken Recipe', size: '80g', summary: 'Real chicken treats with vitamins & taurine. Tender chunks in jelly.', description: 'Irresistible treats made with real chicken. Enriched with vitamins and taurine for heart and eye health. The perfect reward for your feline friend.' },
   { id: '5', imageUrl: product5, alt: 'Chicken & Salmon', name: 'Chicken & Salmon', size: '15g', summary: 'Chicken and salmon in a single-serve pouch. High protein, omega fatty acids.', description: 'A delicious blend in a convenient single-serve format. Supports a shiny coat and healthy skin.' },
   { id: '6', imageUrl: product6, alt: 'Chicken & Salmon', name: 'Chicken & Salmon', size: '90g', summary: 'Premium wet food: chicken & salmon. 100% human-grade ingredients.', description: 'Combining tender chicken and salmon with added vitamins and minerals. A nutritious meal cats love.' },
@@ -42,6 +43,7 @@ const products: ProductShowcaseItem[] = [
   { id: '14', imageUrl: product14, alt: 'Gourmet morsels Salmon in sauce', name: 'Gourmet morsels Salmon in sauce', size: '85g', summary: 'Gourmet salmon morsels in sauce. Omega-rich for skin, coat & joints.', description: 'Premium quality for discerning cats. Omega-rich salmon supports skin, coat, and joint health.' },
   { id: '15', imageUrl: product15, alt: 'Tender Cuts in Gravy', name: 'Tender Cuts in Gravy', size: '12x50g', summary: 'Tender cuts in gravy, multipack portions. Variety and portion control.', description: 'Convenient multipack portions. Great for variety and portion control. Complete and balanced nutrition in every pouch.' },
   { id: '16', imageUrl: product16, alt: 'Beef in Gravy', name: 'Beef in Gravy', size: '85g', summary: 'Real beef in savory gravy. High-quality protein for strong muscles.', description: 'High-quality protein source for strong muscles. A hearty, flavorful option that cats find irresistible.' },
+  { id: '17', imageUrl: productRemi, alt: 'REMI Dog Food', name: 'REMI Dog Food', size: '2.5 kg', summary: 'Natural & nutritious. High protein, grain-free, with Omega 3 & 6 for a healthy coat and vitality.', description: 'Remember Remi. Premium dry dog food made with natural ingredients. High protein for strong muscles, grain-free for sensitive tummies, and Omega 3 & 6 for skin and coat health. Complete nutrition dogs love.' },
 ];
 
 const catsProducts = products.filter((p) => CAT_PRODUCT_IDS.includes(p.id));
