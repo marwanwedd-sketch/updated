@@ -237,7 +237,7 @@ const ProductSection: React.FC = () => {
         {/* Cats section */}
         <div className="mb-14 sm:mb-20">
           <h3 className="text-2xl sm:text-3xl font-display font-bold text-forest-green mb-6 sm:mb-8">
-            {t('about.cats')}
+            🐱 {t('about.cats')}
           </h3>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6 lg:gap-8 xl:gap-10">
             {catsProducts.map((product, index) => (
@@ -258,7 +258,7 @@ const ProductSection: React.FC = () => {
         {/* Dogs section */}
         <div>
           <h3 className="text-2xl sm:text-3xl font-display font-bold text-forest-green mb-6 sm:mb-8">
-            {t('about.dogs')}
+            🐕 {t('about.dogs')}
           </h3>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6 lg:gap-8 xl:gap-10">
             {dogsProducts.map((product, index) => (

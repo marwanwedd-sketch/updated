@@ -1,4 +1,5 @@
 import React from 'react';
+import heroBanner from '../hero-pet-shop.png';
 import heroCat1 from '../hero-cat-1.jpg';
 import heroDog2 from '../hero-dog-2.jpg';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -8,6 +9,16 @@ const Hero: React.FC = () => {
   const { t } = useLanguage();
   return (
     <section id="hero" className="relative overflow-hidden pt-6 pb-14 sm:pt-10 sm:pb-20 lg:pt-24 lg:pb-32 bg-gradient-to-b from-warm-sand via-warm-sand to-white/50">
+      {/* Hero banner */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 mb-10 sm:mb-12">
+        <div className="relative w-full overflow-hidden rounded-2xl sm:rounded-3xl shadow-2xl ring-2 ring-white/40 ring-offset-2 ring-offset-warm-sand/80">
+          <img
+            src={heroBanner}
+            alt="Happy cat and dog - Siam Pet Food"
+            className="w-full h-auto object-cover max-h-[180px] sm:max-h-[220px] lg:max-h-[260px]"
+          />
+        </div>
+      </div>
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 right-10 w-96 h-96 bg-terracotta/10 rounded-full blur-3xl animate-pulse"></div>
